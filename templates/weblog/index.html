@@ -4,18 +4,53 @@
 
 <html lang="en">
 	<head>
-		<meta charset="utf-8"/>
-		<link rel="stylesheet" href="{% static "CSS/design.css" %}">
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+    
+		<link rel="stylesheet" href="{% static "css/bootstrap.min.css " %}" >
 		<title>Home</title>
 	
 	</head>
 	
 	<body>
+		 
 		
-		<h1> WELCOME to WEBlog</h1>  </br>
-		<h2> Hello {{ boldmessage }} </h2>   </br>
-		<p> <a href="/weblog/diary"> DIARY</a> </p>
+			<nav class="navbar navbar-inverse">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>                        
+						</button>
+						<a class="navbar-brand" href="#">Logo</a>
+					</div>
+					<div class="collapse navbar-collapse" id="myNavbar">
+						<ul class="nav navbar-nav">
+							<li class="active"><a href="#">Home</a></li>
+							<li><a href="#">About</a></li>
+							<li><a href="#">Projects</a></li>
+							<li><a href="#">Contact</a></li>
+						</ul>
+						<ul class="nav navbar-nav navbar-right">
+							<li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+						</ul>
+					</div>
+				</div>
+		</nav>
 		
+		
+			<h1> WELCOME to WEBlog</h1>  </br>
+			<h2> Hello {{ boldmessage }} </h2>   </br>
+			<p> <a href="/weblog/diary"> DIARY</a> </p>
+			
+			
+			
+		
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script src="{% static "js/bootstrap.min.js " %}"></script>
 	</body>
 	
 	
