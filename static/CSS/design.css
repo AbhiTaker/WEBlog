@@ -1,0 +1,14 @@
+
+body{
+	width: 100%;
+	display: -webkit-box;
+	-webkit-box-pack: center;
+	background:  -webkit-gradient(linear, left top, left bottom, from(white), to(white));
+
+	
+}
+
+h1{
+color : red ;
+
+}
