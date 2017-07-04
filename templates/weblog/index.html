@@ -28,10 +28,19 @@
 					</div>
 					<div class="collapse navbar-collapse" id="myNavbar">
 						<ul class="nav navbar-nav">
-							<li class="active"><a href="#">Home</a></li>
-							<li><a href="#">About</a></li>
+							{% if "/weblog" %}
+							<li class="active"><a href="/weblog">Home</a></li>
+							<li><a href="/weblog/about">About</a></li>
 							<li><a href="#">Projects</a></li>
 							<li><a href="#">Contact</a></li>
+							{% else %}
+							<li><a href="/weblog">Home</a></li>
+							<li  class="active"><a href="/weblog/about">About</a></li>
+							<li><a href="#">Projects</a></li>
+							<li><a href="#">Contact</a></li>
+							
+							{% endif %}
+							
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
 							<li class="dropdown">
@@ -55,7 +64,20 @@
 						<ul class="nav nav-pills nav-stacked">
 							<li class="active"><a href="#section1">Home</a></li>
 							<li><a href="#section2">Friends</a></li>
-							<li><a href="#section3">DIARY</a></li>
+							<div class="panel-group">
+								<div class="panel panel-default">
+									<div class="panel-heading">
+							<li data-toggle="collapse" href="#collapse1"><a href="#section3">DIARY</a></li>
+							        </div>
+								<div id="collapse1" class="panel-collapse collapse">
+									<ul class="list-group">
+										<li class="list-group-item">READ</li>
+										<li class="list-group-item">W</li>
+										<li class="list-group-item">Three</li>
+									</ul>
+								</div>	
+							</div>
+							</div>
 							<li><a href="#section3">Photos</a></li>
 						</ul><br>
 					<div class="input-group">
@@ -68,10 +90,12 @@
 					</div>
 				</div>
 				
-		
+			{% block content %}
 			<h1> WELCOME to WEBlog</h1>  </br>
 			<h2> Hello {{ boldmessage }} </h2>   </br>
 			<p> <a href="/weblog/diary"> DIARY</a> </p>
+			{% endblock %}
+			
 			
 			
 			

@@ -13,3 +13,10 @@ def index(request):
 def diary(request):
     return HttpResponse("FIRST VIEW OF DIARY APPLICATION <a href='/weblog/'> home </a>")
 
+def about(request) :
+
+    context = RequestContext(request)
+    context_dict = {'user': "ABHITAKER"}
+
+    return render_to_response('weblog/about.html', context_dict, context)
+
