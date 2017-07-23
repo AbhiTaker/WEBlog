@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 
 from django.db import models
 from django.contrib.auth.models import User
+from django.template.defaultfilters import slugify
 
 class Post(models.Model):
 
@@ -9,7 +10,7 @@ class Post(models.Model):
     slug = models.SlugField(unique=True)
     text = models.TextField()
     created_on = models.DateTimeField(auto_now_add = True)
-    #author = models.Foreignkey(User)
+    #author = models.ForeignKey(User)
 
 
     def __unicode__(self):
@@ -22,8 +23,8 @@ class Post(models.Model):
                 })
 
     def save(self,*args, **kwargs) :
-        if not self.slug :
-            self.slug = slugify(self.title)
+        if not self.slug : 
+            self.slug = slugify(self.title)                            #generating slug from title
         super(Post , self).save(*args,**kwargs)
 
 class Comment(models.Model):

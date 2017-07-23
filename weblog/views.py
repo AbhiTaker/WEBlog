@@ -24,4 +24,8 @@ def write(request) :
     
     return render_to_response('weblog/write.html')
 
+def read(request) :
+    
+    return render_to_response('weblog/read.html')
+
 

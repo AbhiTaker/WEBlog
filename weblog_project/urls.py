@@ -18,10 +18,17 @@ from django.contrib import admin
 from django.conf.urls import include
 from django.views.generic import RedirectView
 from django.conf import settings
-from django.conf.urls.static import static
+from django.contrib.auth import views
+
+admin.autodiscover()
 
 urlpatterns = [
+    url(r'^accounts/',include('django.contrib.auth.urls')),
     url(r'^$', RedirectView.as_view(url='/weblog/', permanent=True)),
     url(r'^admin/', admin.site.urls),
     url(r'^weblog/',include('weblog.urls')),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+] 
+#+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+
+    #url(r'^accounts/login/$', 'django.contrib.auth.views.login.html'),
