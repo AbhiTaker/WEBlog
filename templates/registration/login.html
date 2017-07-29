@@ -19,12 +19,15 @@
 <form method="post" action="{% url 'login' %}">
 {% csrf_token %}
 
-<div>
-  <td>{{ form.username.label_tag }}</td>
+<div class="input-group">
+   <td> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span></td>
+  <!--{{ form.username.label_tag }}</td>-->
   <td>{{ form.username }}</td>
 </div>
-<div>
-  <td>{{ form.password.label_tag }}</td>
+<div class="input-group">
+    <td> <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span> </td>
+
+  <!-- <td>{{ form.password.label_tag }}</td> -->
   <td>{{ form.password }}</td>
 </div>
 
