@@ -4,6 +4,7 @@
 {% block content %}
 
 			<h1> WELCOME to WEBlog</h1>  </br>
+			<h2>Hi..!! {{user}}</h2>
 			{% if user.is_authenticated %}
 				<li>User: {{ user.get_username }}</li>
 			{% endif %}

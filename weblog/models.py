@@ -3,6 +3,13 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
 
+class SignUp(models.Model):
+    email = models.EmailField();
+    name = models.CharField(max_length = 100,blank = False)
+
+    def __unicode__(self):
+        return self.email
+
 class Post(models.Model):
 
     title = models.CharField(max_length = 100)

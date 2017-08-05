@@ -9,7 +9,10 @@ from django.contrib.auth.decorators import login_required
 def index(request):
 
     context = RequestContext(request)
-    context_dict = {'boldmessage': "ABHITAKER"}
+    user = request.user
+    context_dict = {
+    "user" : user,
+    }
 
     return render_to_response('weblog/home.html', context_dict, context)
 
