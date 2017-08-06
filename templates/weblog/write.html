@@ -3,18 +3,30 @@
 
 {% block content %}
 <h4><small>WRITE POSTS</small></h4>
-<hr>   
+<hr>
+<h4 align="right">Author : {{ user }}</h4> 
 
 
-  <form>
+<form method="POST" action="">
+	{% csrf_token %}
+  	<!--{{ form.as_p }}  -->
+  	<div class="form-group">
+  		</label> <input id="id_title" class="form-control" id="inputdefault"  placeholder="TITLE" maxlength="100" name="title" type="text" required />
+  	</div>
+  	<div class="form-group form-group-lg">
+  		<label for="inputlg">WRITE</label>
+		<textarea class="form-control" rows="10" id="comment" id="id_text" name="text" required>
+		</textarea>
+	</div>
   
-   <div class="form-group">
-    <input class="form-control" id="inputdefault" type="text"  placeholder="TITLE">
-  </div>
-  <div class="form-group form-group-lg">
-    <label for="inputlg">WRITE</label>
-	
-   <textarea class="form-control" rows="10" id="comment"></textarea>
-  </div>
+	<!--<div class="form-group">
+    	<input class="form-control" id="inputdefault" type="text"  placeholder="TITLE">
+	</div>
+    <div class="form-group form-group-lg">
+    	<label for="inputlg">WRITE</label>
+		<textarea class="form-control" rows="10" id="comment"></textarea>
+    </div> -->
+    <input type="submit" class="btn btn-info" value="Submit Button">
+
 </form>
 {% endblock %}

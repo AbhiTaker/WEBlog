@@ -3,6 +3,9 @@ from django.http import HttpResponse
 from django.template import RequestContext
 from django.shortcuts import render_to_response
 from django.contrib.auth.decorators import login_required
+from .forms import SignUpForm, PostForm
+from django.views.decorators.csrf import csrf_exempt
+
 
 
 @login_required
@@ -28,10 +31,23 @@ def about(request) :
 
     return render_to_response('weblog/about.html', context_dict, context)
 
+
 @login_required
+@csrf_exempt
 def write(request) :
-    
-    return render_to_response('weblog/write.html')
+    context = RequestContext(request)
+    user = request.user
+
+    form = PostForm(request.POST or None)
+
+    if form.is_valid():
+        form.save()
+
+    context_dict = {
+    "user" : user,
+    "form" : form,
+    }
+    return render_to_response('weblog/write.html',context_dict, context)
 
 @login_required
 def read(request) :
