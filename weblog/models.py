@@ -16,7 +16,7 @@ class Post(models.Model):
     slug = models.SlugField(unique=True)
     text = models.TextField()
     created_on = models.DateTimeField(auto_now_add = True)
-    author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
+    author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)#, blank=True)
 
 
     def __unicode__(self):

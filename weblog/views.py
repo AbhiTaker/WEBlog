@@ -5,6 +5,8 @@ from django.shortcuts import render_to_response
 from django.contrib.auth.decorators import login_required
 from .forms import SignUpForm, PostForm
 from django.views.decorators.csrf import csrf_exempt
+from django.views import generic
+from .models import Post
 
 
 
@@ -54,4 +56,7 @@ def read(request) :
     
     return render_to_response('weblog/read.html')
 
+class PostView(generic.ListView):
+
+    model = Post
 
