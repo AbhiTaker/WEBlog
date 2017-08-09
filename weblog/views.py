@@ -3,23 +3,12 @@ from django.http import HttpResponse
 from django.template import RequestContext
 from django.shortcuts import render_to_response
 from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 from .forms import SignUpForm, PostForm
 from django.views.decorators.csrf import csrf_exempt
 from django.views import generic
 from .models import Post
 
-
-
-@login_required
-def index(request):
-
-    context = RequestContext(request)
-    user = request.user
-    context_dict = {
-    "user" : user,
-    }
-
-    return render_to_response('weblog/home.html', context_dict, context)
 
 @login_required
 def diary(request):
@@ -56,7 +45,13 @@ def read(request) :
     
     return render_to_response('weblog/read.html')
 
+
 class PostView(generic.ListView):
 
     model = Post
+    template_name="weblog/home.html"
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(PostView, self).dispatch(*args, **kwargs)
 

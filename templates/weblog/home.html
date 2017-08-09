@@ -2,12 +2,29 @@
 {% load static %} 
 
 {% block content %}
+			
+     {% if post_list %}
+     	{% for post in post_list %}
+     		<h4><small>RECENT POSTS</small></h4>
+    		 <hr>
+     		<h2>{{ post.title }}</h2>
+     		<h5><span class="glyphicon glyphicon-time"></span> Post by {{post.author}}, {{post.created_on}}.</h5>
+     		 <h5><span class="label label-danger">TAG1</span> <span class="label label-primary">TAG2</span></h5><br>
+     		<p>{{post.text}}</p>
+     		<br><br>
+     		<h4>Leave a Comment:</h4>
+      		<form role="form">
+       			 <div class="form-group">
+         			 <textarea class="form-control" rows="3" required></textarea>
+        		</div>
+        		<button type="submit" class="btn btn-success">Submit</button>
+      		</form>
+      		<br><br>
+     		  
+      
+      			{% endfor %}
 
-			<h1> WELCOME to WEBlog</h1>  </br>
-			<h2>Hi..!! {{user}}</h2>
-			{% if user.is_authenticated %}
-				<li>User: {{ user.get_username }}</li>
-			{% endif %}
-
-			{{Post.title}}
+      		{% else %}
+      		<p>There are no Post.</p>
+    		{% endif %} 
 {% endblock %}
