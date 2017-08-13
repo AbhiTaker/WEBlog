@@ -18,12 +18,13 @@ from django.contrib import admin
 from django.conf.urls import include
 from django.views.generic import RedirectView
 from django.conf import settings
-from django.contrib.auth import views
+#from django.contrib.auth import views
 
 admin.autodiscover()
 
 urlpatterns = [
-    url(r'^accounts/',include('django.contrib.auth.urls')),
+    url(r'^accounts/', include('registration.backends.default.urls')),
+    #url(r'^accounts/',include('django.contrib.auth.urls')),
     url(r'^$', RedirectView.as_view(url='/weblog/', permanent=True)),
     url(r'^admin/', admin.site.urls),
     url(r'^weblog/',include('weblog.urls')),

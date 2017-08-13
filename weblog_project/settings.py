@@ -38,12 +38,18 @@ TEMPLATE_PATH = os.path.join(PROJECT_PATH, 'templates')
 
 INSTALLED_APPS = [
     'django.contrib.admin',
+    'django.contrib.sites',
+    'registration',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #myapps
     'weblog.apps.WeblogConfig',
+    #third party apps
+    'crispy_forms',
+    
 ]
 
 MIDDLEWARE = [
@@ -132,4 +138,13 @@ STATICFILES_DIRS = [
 STATIC_PATH,
 ]
 
-LOGIN_REDIRECT_URL = '/weblog/home/'
+SITE_ID = 1
+
+LOGIN_REDIRECT_URL = '/weblog/'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
+
+#django authentication
+
+ACCOUNT_ACTIVATION_DAYS = 7
+REGISTRATION_AUTO_LOGIN = True
