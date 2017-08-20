@@ -41,17 +41,29 @@ def write(request) :
     return render_to_response('weblog/write.html',context_dict, context)
 
 @login_required
-def read(request) :
+def read(request):
     
     return render_to_response('weblog/read.html')
 
 
-class PostView(generic.ListView):
+@login_required
+def home(request):
+    context = RequestContext(request)
+
+    queryset = Post.objects.all().order_by('-created_on')
+    context_dict = {
+        "queryset" : queryset
+    }
+
+    return render_to_response('weblog/home.html', context_dict, context)
+
+
+"""class PostView(generic.ListView):
 
     model = Post
     template_name="weblog/home.html"
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
-        return super(PostView, self).dispatch(*args, **kwargs)
+        return super(PostView, self).dispatch(*args, **kwargs)"""
 

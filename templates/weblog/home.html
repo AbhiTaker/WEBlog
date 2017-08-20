@@ -2,9 +2,9 @@
 {% load static %} 
 
 {% block content %}
+
 			
-     {% if post_list %}
-     	{% for post in post_list %}
+     	{% for post in queryset %}
      		<h4><small>RECENT POSTS</small></h4>
     		 <hr>
      		<h2>{{ post.title }}</h2>
@@ -24,7 +24,4 @@
       
       			{% endfor %}
 
-      		{% else %}
-      		<p>There are no Post.</p>
-    		{% endif %} 
 {% endblock %}
